@@ -3,3 +3,4 @@ from . import STELLAR
 from . import STELLAR_run
 from . import utils
 from . import datasets
+from . import models
