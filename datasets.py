@@ -15,7 +15,7 @@ def load_data(labeled_file, unlabeled_file, typecol, distance_thres, sample_rate
     train_X = train_df[:, cols].select_dtypes(['number'])
     # train_X = train_df.iloc[:, 1:49].values # node features, indexes depend on specific datasets
     cols2 = [x for x in list(test_df.columns.values) if x not in ["x", "y"]][1:]
-    test_X = test_df.[:, cols2].select_dtypes(['number'])
+    test_X = test_df[:, cols2].select_dtypes(['number'])
     # test_X = test_df.iloc[:, 1:49].values
     labeled_pos = train_df.loc[:, ["x", "y"]].values # x,y coordinates, indexes depend on specific datasets
     unlabeled_pos = test_df.loc[:, ["x", "y"]].values
