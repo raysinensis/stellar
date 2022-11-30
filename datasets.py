@@ -19,10 +19,10 @@ def load_data(labeled_file, unlabeled_file, typecol, distance_thres, sample_rate
     # test_X = test_df.iloc[:, 1:49].values
     labeled_pos = train_df.loc[:, ["x", "y"]].values # x,y coordinates, indexes depend on specific datasets
     unlabeled_pos = test_df.loc[:, ["x", "y"]].values
-    # labeled_regions = train_df['unique_region']
-    labeled_regions = list("1") * train_df.shape[0] 
-    unlabeled_regions = list("2") * test_df.shape[0]
-    # unlabeled_regions = test_df['unique_region']
+    train_df['unique_region'] = "1"
+    labeled_regions = train_df['unique_region']
+    train_df['unique_region'] = "2"
+    unlabeled_regions = test_df['unique_region']
     train_y = train_df[typecol] # class information
     cell_types = np.sort(list(set(train_df[typecol].values))).tolist()
     # we here map class in texts to categorical numbers and also save an inverse_dict to map the numbers back to texts
