@@ -12,10 +12,10 @@ def load_data(labeled_file, unlabeled_file, typecol, distance_thres, sample_rate
     # train_df = train_df.loc[np.logical_and(train_df['tissue'] == 'CL', train_df['donor'] == 'B004')]
     # test_df = test_df.loc[np.logical_and(test_df['tissue'] == 'CL', test_df['donor'] == 'B005')]
     cols = [x for x in list(train_df.columns.values) if x not in ["x", "y", typecol]][1:]
-    train_X = train_df.loc[:, cols].select_dtypes(['number'])
+    train_X = train_df.loc[:, cols].select_dtypes(['number']).values
     # train_X = train_df.iloc[:, 1:49].values # node features, indexes depend on specific datasets
     cols2 = [x for x in list(test_df.columns.values) if x not in ["x", "y"]][1:]
-    test_X = test_df.loc[:, cols2].select_dtypes(['number'])
+    test_X = test_df.loc[:, cols2].select_dtypes(['number']).values
     # test_X = test_df.iloc[:, 1:49].values
     labeled_pos = train_df.loc[:, ["x", "y"]].values # x,y coordinates, indexes depend on specific datasets
     unlabeled_pos = test_df.loc[:, ["x", "y"]].values
